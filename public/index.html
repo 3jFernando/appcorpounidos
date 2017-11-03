@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>CORPOUNIDOS</title>
+
+
+<script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
+<meta charset="utf-8">
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<link rel="stylesheet" href="css/login.css">
+
+
+
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+
+      <a href="#" id="btnRecargarPaginaPrincipal" style="color: black; font-size: 30px; text-align: center; font-family: serif;">ZONA INDUSTRIAL COMERCIAL Y DE SERVICIOS
+        PITALITO
+      </a>
+      <a class="navbar-brand" href="#" id="btnRecargarPaginaPrincipal2" style="color: darkcyan;font-family: serif;">ZONA INDUSTRIAL COMERCIAL Y DE SERVICIOS
+        PITALITO
+      </a>
+      <a href="#" class="navbar-brand" id="sociosLabel">SOCIOS 
+      <span id="spanCountCantSocios" class="badge">0</span></a>	
+    </div>
+
+    <ul class="nav navbar-nav navbar-right">
+      <a href="#" class="navbar-text" id="labelNombreSocio"> </a>
+      <a href="#" class="navbar-text" id="btnSalir">SALIR <span class="glyphicon glyphicon-log-in"></span></a>
+    </ul>    
+  </div>
+</nav>
+
+<div class="container">
+
+    <!--Inicio pagina principal-->
+	<div class="row" id="idDivPaginaPrincipal">
+			
+			<div class="row">
+				<div class="col-lg-2"></div>
+				<div class="col-lg-8">
+					<div id="myCarousel" class="carousel slide" data-ride="carousel">
+					  <!-- Indicators -->
+					  <ol class="carousel-indicators">
+					    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>		    			
+		    			<li data-target="#myCarousel" data-slide-to="1"></li>
+					  </ol>
+
+					  <!-- Wrapper for slides -->
+					  <div class="carousel-inner" role="listbox">
+					    <div class="item active" style="text-align: -webkit-center">
+					      <a href="images/galeria/mapa2.jpg" target="_blank"><img src="images/galeria/mapa2.jpg" alt="Chania" style="width: 520px; height: 350px;"></a>
+					    </div>
+					    <div class="item" style="text-align: -webkit-center">
+					      <a href="images/galeria/mapa3.jpg" target="_blank"><img src="images/galeria/mapa3.jpg" alt="Chania" style="width: 520px; height: 350px;"></a>
+					    </div>
+					  </div>
+
+					  <!-- Left and right controls -->
+					  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+					    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					    <span class="sr-only">Previous</span>
+					  </a>
+					  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+					    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					    <span class="sr-only">Next</span>
+					  </a>
+					  
+					</div>
+				</div>
+				<div class="col-lg-2"></div>
+			</div>
+
+			<h3 style="color: darkcyan;font-family: serif;">CORPOUNIDOS</h3>
+			
+			<div class="row">
+				<center>
+					<button class="btn btn-default" id="procesoSocios" style="padding-top: 20px; padding-bottom: 20px; padding-left: 50px; padding-right: 50px;"> SOCIOS </button>
+	      	<button class="btn btn-default" id="procesoAdmin" style="padding-top: 20px; padding-bottom: 20px; padding-left: 50px; padding-right: 50px;"> ADMINISTRADOR </button>
+				</center>
+			</div>
+
+			<hr><hr>
+
+			<h3 style="color: darkcyan;font-family: serif;">PLANO LOTES ZONA INDUSTRIAL</h3>
+
+			<div class="row">
+				<center>
+					<a href="images/galeria/mapa1.jpg" target="_blank"><button class="btn btn-default" style="padding-top: 20px; padding-bottom: 20px; padding-left: 50px; padding-right: 50px;"> VER PLANO ZONA INDUSTRIAL</button></a>
+				</center>
+			</div>			
+
+		</div>
+    <!--Inicio pagina principal-->		
+
+    <!--Inicio proceso login-->
+    <div class="row" id="procesoAdminDiv">
+
+        <div class="col-sm-6 col-md-4 col-md-offset-4">
+            <div class="account-wall">
+            	<img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
+                    alt="">
+                <h1 class="text-center login-title">INICIAR SESION EN CORPOUNIDOS</h1>
+
+                CORREO ELECTRONICO
+                <input type="text" class="form-control" id="txtId" placeholder="Correo electronico" required autofocus style="padding: 21px;">
+                CONTRASEÑA DE ADMIN
+                <input type="password" class="form-control" id="txtClave" placeholder="Clave" required style="padding: 21px;">
+                <br>
+                <button class="btn btn-lg btn-default btn-block" id="btnAcceder">
+                acceder
+                </button>                
+                
+            </div>
+        </div>
+
+    </div>
+    <!--fin proceso login-->
+
+    <!--Inicio proceso tabla de socios-->
+    <div id="divTableSocios">
+    
+	    <ul class="nav nav-tabs">
+			    <li class="active"><a data-toggle="tab" href="#idTabSociosAdmin">SOCIOS</a></li>
+			    <li id="btnTabPagosSostenimiento"><a data-toggle="tab" href="#idTabPagosSostenimientoAdmin">REGISTRO SOSTENIMIENTO</a></li>
+					<li id="btnTabAbonosAcueducto"><a data-toggle="tab" href="#idTabPagosParaAcueducto">REGISTRO ACUEDUCTO</a></li>
+					<li id="btnTabAbonosVias1"><a data-toggle="tab" href="#idTabAbonosVias1">REGISTRO VIAS 1</a></li>
+					<li id="btnTabAbonosVias2"><a data-toggle="tab" href="#idTabAbonosVias2">REGISTRO VIAS 2</a></li>
+					<li id="btnTabContabilidad"><a data-toggle="tab" href="#idTabContabilidad">CONTABILIDAD</a></li>
+					<li id="btnTabFinalizarDeuda"><a data-toggle="tab" href="#idTabFinalizarDeuda">FINALIZAR DEUDA</a></li>
+			</ul>
+
+			<div class="tab-content">
+			    <div id="idTabSociosAdmin" class="tab-pane fade in active">
+
+			    	<div class="row" >
+			    		<br>
+							<div class="row">
+									
+								<div class="col-lg-2">
+									<button id="btnNuevoSocio" class="btn btn-block btn-default btn-sm">
+										NUEVO SOCIO
+									</button>	
+								</div>	
+
+								<div class="col-lg-2">
+									<button id="btnCancelarNuevoSocio" class="btn btn-block btn-default btn-sm">
+										CANCELAR
+									</button>	
+								</div>	
+
+								<div class="col-lg-2"></div>	
+								<div class="col-lg-2">
+									<input type="number" id="txtBuscadorSociosTablaPing" class="form-control pull-right" style="margin-right: 35px, border: 1px solid black;" placeholder="Ping del socio">
+								</div>	
+
+								<div class="col-lg-4">
+									<div class="input-group">
+										<input type="text" class="form-control pull-right" style="width: 300px; margin-right: 35px, border: 1px solid black;" placeholder="Buscador de socios" id="txtBuscadorSociosTablaNombre">
+										<span class="input-group-btn">
+											<button class="btn btn-default" id="btnBorrarDatosInputBuscarSociosTabla">
+												<span class="glyphicon glyphicon-remove"></span>
+											</button>
+											<button class="btn btn-default" id="btnBuscarSociosEnlaTabla">
+												<span class="glyphicon glyphicon-search"></span>
+											</button>
+										</span>
+									</div>
+								</div>				
+
+							</div>
+
+							<hr>	
+
+							<!--Inicio proceso registro y actualizacion socios-->
+							<div class="row" id="divNuevoSocio">
+
+								<div class="row">
+										<div class="col-lg-3">
+											<div class="form-group">
+											Nombre del socio
+							      		<input type="text" class="form-control" id="txtNuevoNombreSocio">
+							      	</div>
+										</div>
+										<div class="col-lg-3">
+											<div class="form-group">
+											Numero de lotes
+							      		<input type="text" class="form-control" id="txtNuevoN_Lotes">
+							      	</div>
+										</div>
+										<div class="col-lg-3">
+											<div class="form-group">
+											Celular 1
+							      		<input type="text" class="form-control" id="txtNuevoCel1">
+							      	</div>
+										</div>
+										<div class="col-lg-3">
+											<div class="form-group">
+											Celular 2
+							      		<input type="text" class="form-control" id="txtNuevoCel2">
+							      	</div>
+										</div>
+										<div class="col-lg-3">
+											<div class="form-group">
+											Correo electronico
+							      		<input type="text" class="form-control" id="txtNuevoCorreo">
+							      	</div>
+										</div>
+										<div class="col-lg-3">
+											<div class="form-group">
+											Direccion
+							      		<input type="text" class="form-control" id="txtNuevoDireccion">
+							      	</div>
+										</div>
+										<div class="col-lg-3">
+											<div class="form-group">
+											Telefono fijo
+							      		<input type="text" class="form-control" id="txtNuevoFijo">
+							      	</div>
+										</div>
+										<div class="col-lg-3">
+											<div class="form-group">
+											Cuota de sostenimiento
+							      	<input type="text" class="form-control" id="txtNuevoC_Sostenimiento">					
+							      	</div>
+										</div>
+										<div class="col-lg-3">
+											<div class="form-group">
+											Contraseña
+							      	<input type="text" class="form-control" id="txtNuevoClave">					
+							      	</div>
+										</div>
+										<input type="hidden" class="form-control" id="txtNuevoId">					
+										
+										<div class="col-lg-3">
+											<label style="color:white;">guardar socio</label><br>
+											<button id="btnGuardarNuevoSocio" class="btn btn-block btn-sm">
+											  GUARDAR SOCIO
+											</button>	
+											<button id="btnCompletarActualizacionSocio" class="btn btn-block btn-sm" style="display: none">
+											  ACTUALIZAR SOCIO
+											</button>	
+										</div>
+									</div>		
+
+							</div>
+							<!--fin proceso registro y actualizacion socios-->
+
+							<table class="table table-bordered table-hover display" id="tableSociosListado" cellspacing="0" width="100%">          
+							    <thead>
+							      <tr style="font-size: 13px;">
+							      	<th>PIN</th>
+							      	<th>NOMBRE</th>
+											<th>DIRECCION</th>
+											<th>AC</th>
+                      <th>V1</th>
+                      <th>V2</th>
+											<th>CUOTA SOSTENIMIENTO</th>
+											<th>NUMERO LOTES</th>
+											<th>CORREO</th>
+											<th>CLAVE</th>
+											<th></th>
+							      </tr>
+							    </thead>
+							  <tbody id="tableSocios" style="font-size: 12px;">
+							            
+							  </tbody>
+							</table>
+
+						</div>
+
+			    </div>
+					
+			    <div id="idTabPagosSostenimientoAdmin" class="tab-pane fade">
+
+			    	<div class="row">
+			    		<br>
+			    		<div class="col-lg-3"></div>
+			    		<div class="col-lg-3">
+			    			<div class="form-group">
+								  SELECCIONE EL SOCIO
+								  <select class="form-control" id="listSociosRegPagosSostenimiento">
+								  </select>
+								</div>
+			    		</div>
+			    		<div class="col-lg-3">
+								<div class="form-group">
+									ABONO
+				      		<input type="number" class="form-control" id="txtAbono" value="0">
+				      	</div>
+							</div>
+			    	</div>
+			    	<div class="row">
+				    	<div class="col-lg-3"></div>				    	
+							<div class="col-lg-3">
+								<div class="form-group">
+									ENTIDAD
+									<select class="form-control" id="selectEntidad">
+										<option value="DAVIVIENDA">DAVIVIENDA</option>
+										<option value="COOLAC">COOLAC</option>
+								  </select>
+				      	</div>
+							</div>	
+							<div class="col-lg-3">
+								<div class="form-group">
+									Numero de recibo
+									<input type="number" class="form-control" id="txtAcueductoNReciboSostenimiento" value="0">
+								</div>
+							</div>
+			    	</div>
+			    	<div class="row">
+			    		<div class="col-lg-3"></div>
+			    		<div class="col-lg-3">
+								<div class="form-group">
+									<label style="color: transparent;">guardar pagos</label>
+									<button id="btnGuardarNuevoPagoSostenimiento" class="btn-block btn btn-xs btn-sm">
+									  GUARDAR SOSTENIMIENTO
+									</button>
+				      	</div>
+							</div>
+			    	</div>
+
+			    </div>
+					
+					<div id="idTabPagosParaAcueducto" class="tab-pane fade">
+						
+						<br>
+						<div class="row">
+							<div class="col-lg-3"></div>	
+							<div class="col-lg-3">
+			    			<div class="form-group">
+								  Seleccione el socio
+								  <select class="form-control" id="selectAcueductoSocio">
+								  </select>
+								</div>
+			    		</div>	
+							
+							<div class="col-lg-3">
+								<div class="form-group">
+									Abono
+									<input type="number" class="form-control" id="txtAcueductoAbono" value="0">
+								</div>
+							</div>
+						</div>
+						<div class="row">	
+							<div class="col-lg-3"></div>
+							<div class="col-lg-3">
+								<div class="form-group">
+									ENTIDAD
+									<select class="form-control" id="selectAcueductoEntidad">
+										<option value="DAVIVIENDA">DAVIVIENDA</option>
+										<option value="COOLAC">COOLAC</option>
+								  </select>
+				      	</div>
+							</div>	
+							<div class="col-lg-3">
+								<div class="form-group">
+									Fecha de corte
+									<input type="date" class="form-control" id="dateAcueducto">
+								</div>
+							</div>
+						</div>	
+						<div class="row">
+							<div class="col-lg-3"></div>
+							<div class="col-lg-3">
+								<div class="form-group">
+									Intereses
+									<input type="number" class="form-control" id="txtAcueductoIntereses" value="0">
+								</div>
+							</div>	
+							<div class="col-lg-3">
+								<div class="form-group">
+									Pasan
+									<input type="number" class="form-control" id="txtAcueductoPasan" value="0">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-3"></div>	
+							<div class="col-lg-3">
+								<div class="form-group">
+									Numero de recibo
+									<input type="number" class="form-control" id="txtAcueductoNRecibo" value="0">
+								</div>
+							</div>
+							<div class="col-lg-3">
+									<label style="color:transparent;">guardar</label>	
+								<button class="btn btn-block btn-xs" id="btnGuardarAbonoAcueducto">GUARDAR ABONO ACUEDUCTO</button>	
+							</div>	
+						</div>
+
+					</div>
+
+					<div id="idTabAbonosVias1" class="tab-pane fade">
+						
+						<br>
+						<div class="row">
+							<div class="col-lg-3"></div>
+							<div class="col-lg-3">
+			    			<div class="form-group">
+								  Seleccione el socio
+								  <select class="form-control" id="selectVias1Socio">
+								  </select>
+								</div>
+			    		</div>	
+							
+							<div class="col-lg-3">
+								<div class="form-group">
+									Abono
+									<input type="number" class="form-control" id="txtVias1Abono" value="0">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-3"></div>	
+							<div class="col-lg-3">
+								<div class="form-group">
+									Entidad
+									<select class="form-control" id="selectVias1Entidad">
+										<option value="DAVIVIENDA">DAVIVIENDA</option>
+										<option value="COOLAC">COOLAC</option>
+								  </select>
+				      	</div>
+							</div>	
+							<div class="col-lg-3">
+								<div class="form-group">
+									Fecha de corte
+									<input type="date" class="form-control" id="dateVias1">
+								</div>
+							</div>
+						</div>	
+						<div class="row">
+							<div class="col-lg-3"></div>
+							<div class="col-lg-3">
+								<div class="form-group">
+									Intereses
+									<input type="number" class="form-control" id="txtVias1Intereses" value="0">
+								</div>
+							</div>	
+							<div class="col-lg-3">
+								<div class="form-group">
+									Pasan
+									<input type="number" class="form-control" id="txtVias1Pasan" value="0">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-3"></div>
+							<div class="col-lg-3">
+								<div class="form-group">
+									Numero de recibo
+									<input type="number" class="form-control" id="txtAcueductoNReciboVias1" value="0">
+								</div>
+							</div>
+							<div class="col-lg-3">
+								<label style="color: transparent;">guardar</label>
+								<button class="btn btn-block btn-xs" id="btnGuardarAbonoVias1">GUARDAR ABONO VIAS 1</button>	
+							</div>	
+						</div>
+
+					</div>
+
+					<div id="idTabAbonosVias2" class="tab-pane fade">
+						
+						<br>
+						<div class="row">
+							<div class="col-lg-3"></div>
+							<div class="col-lg-3">
+			    			<div class="form-group">
+								  Seleccione el socio
+								  <select class="form-control" id="selectVias2Socio">
+								  </select>
+								</div>
+			    		</div>	
+							
+							<div class="col-lg-3">
+								<div class="form-group">
+									Abono
+									<input type="number" class="form-control" id="txtVias2Abono" value="0">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-3"></div>	
+							<div class="col-lg-3">
+								<div class="form-group">
+									Entidad
+									<select class="form-control" id="selectVias2Entidad">
+										<option value="DAVIVIENDA">DAVIVIENDA</option>
+										<option value="COOLAC">COOLAC</option>
+								  </select>
+				      	</div>
+							</div>	
+							<div class="col-lg-3">
+								<div class="form-group">
+									Fecha de corte
+									<input type="date" class="form-control" id="dateVias2">
+								</div>
+							</div>
+						</div>	
+						<div class="row">
+							<div class="col-lg-3"></div>
+							<div class="col-lg-3">
+								<div class="form-group">
+									Intereses
+									<input type="number" class="form-control" id="txtVias2Intereses" value="0">
+								</div>
+							</div>	
+							<div class="col-lg-3">
+								<div class="form-group">
+									Pasan
+									<input type="number" class="form-control" id="txtVias2Pasan" value="0">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-3"></div>	
+							<div class="col-lg-3">
+								<div class="form-group">
+									Numero de recibo
+									<input type="number" class="form-control" id="txtAcueductoNReciboVias2" value="0">
+								</div>
+							</div>	
+							<div class="col-lg-3">
+								<label style="color: transparent;">guardar</label>
+								<button class="btn btn-block btn-xs" id="btnGuardarAbonoVias2">GUARDAR ABONO VIAS 2</button>	
+							</div>	
+						</div>
+
+					</div>
+
+					<div id="idTabContabilidad" class="tab-pane fade">
+
+						<div id="idDivContabilidad">
+							<h2>CONTABILIDAD HASTA LA FECHA</h2>
+							
+							<div class="row">
+								
+								<div class="col-lg-4">
+									<div class="card" style="width: 20rem;">
+									  <img class="card-img-top" src="images/contabilidad/acueducto.jpg" alt="Card image cap" style="width: 318px; height: 180px;">
+									  <div class="card-block">
+									    <h4 class="card-title">ABONOS ACUEDUCTO</h4>
+									    <p class="card-text">Este es el total de la suma de todos los abonos realizados para el Acueducto</p>
+									    <a href="#" class="btn btn-primary" id="idTableContabilidadAcueducto"></a>
+									  </div>
+									</div>
+								</div>
+
+								<div class="col-lg-4">
+									<div class="card" style="width: 20rem;">
+									  <img class="card-img-top" src="images/contabilidad/vias1.jpg" alt="Card image cap" style="width: 318px; height: 180px;">
+									  <div class="card-block">
+									    <h4 class="card-title">ABONOS VIAS 1</h4>
+									    <p class="card-text">Este es el total de la suma de todos los abonos realizados para Vias 1</p>
+									    <a href="#" class="btn btn-primary" id="idTableContabilidadVias1"></a>
+									  </div>
+									</div>
+								</div>
+
+								<div class="col-lg-4">
+									<div class="card" style="width: 20rem;">
+									  <img class="card-img-top" src="images/contabilidad/vias2.jpg" alt="Card image cap" style="width: 318px; height: 180px;">
+									  <div class="card-block">
+									    <h4 class="card-title">ABONOS VIAS 2</h4>
+									    <p class="card-text">Este es el total de la suma de todos los abonos realizados para Vias 2</p>
+									    <a href="#" class="btn btn-primary" id="idTableContabilidadVias2"></a>
+									  </div>
+									</div>
+								</div>
+
+							</div>	
+
+						</div>
+					</div>					
+
+					<div id="idTabFinalizarDeuda" class="tab-pane fade">
+							
+						<h2>FINALIZAR DEUDAS DEL SOCIOS</h2>
+
+						<br>
+						<div class="row">
+							<div class="col-lg-3"></div>	
+							<div class="col-lg-3">
+			    			<div class="form-group">
+								  Seleccione el socio
+								  <select class="form-control" id="selectFinalizarDeudaSocio">
+								  </select>
+								</div>
+			    		</div>	
+			    		<div class="col-lg-3">
+			    			<div class="form-group">
+								  Seleccione la deuda a finalizar
+								  <select class="form-control" id="selectFinalizarDeudaCuenta">
+								  	<option value="DEUDA ACUEDUCTO">DEUDA ACUEDUCTO</option>
+								  	<option value="DEUDA VIAS 1">DEUDA VIAS 1</option>
+								  	<option value="DEUDA VIAS 2">DEUDA VIAS 2</option>
+								  </select>
+								</div>
+			    		</div>	
+			    		<div class="col-lg-3"></div>
+			    	</div>	
+			    	<div class="row">
+			    		<div class="col-lg-3"></div>
+			    		<div class="col-lg-6">
+			    			<button class="btn btn-block" id="idBtnFinalizarDeuda">FINALIZAR DEUDA</button>
+			    		</div>
+			    		<div class="col-lg-3"></div>
+			    	</div>
+
+					</div>
+			</div>   
+
+		</div>	 	
+    <!--fin proceso tabla de socios-->
+
+    <!--Inicio proceso socios-->
+    <div id="procesoSociosDiv" style="display: none">
+
+			<div class="row">
+				<div class="col-lg-4">
+					<div class="alert alert-warning" style="text-align: left;">
+					  <strong>1) </strong> Seleccione su nombre en la lista de socios<br>
+					  <strong>2) </strong> Escriba su PIN <br>
+					  <strong>3) </strong> Oprima el boton "Ver datos del socio";<br>
+					  <strong>4) </strong> Presione "VER FACTURA DE PAGO" para ver los detalles de la factura del socio<br>
+					</div>
+					
+					<!--<ul class="list-group" id="listadoSociosDelSistema" style="overflow-y: scroll;height: 390px; width: 100%;"></ul>-->
+
+					<div class="list-group" id="listadoSociosDelSistema" style="overflow-y: scroll;height: 320px; width: 100%;">
+					  
+					</div>
+
+					<div id="divSocioSeleccionado" class="alert alert-default">
+					  <center><strong id="socioSeleccionado">RECUERDE SELECCIONAR UN SOCIO</strong></center>
+					</div>
+				</div>
+
+				<div id="divResultadoBusquedaSocio" style="text-align: left;">
+							
+					<div class="row">
+						<div class="col-lg-2">
+								<div class="form-group">			
+									<input type="text" class="form-control" id="txtPasswordSocio" placeholder="Ingrese el pin del socio">	
+									<input type="hidden" id="txtPinSocio">		
+						    </div>
+						</div>
+						<div class="col-lg-2">
+							<div class="form-group">			
+								<button class="btn btn-default btn-block" id="btnBuscarDataSocio"><span class="glyphicon glyphicon-search"></span> ver datos del socio</button>
+						  </div>
+						</div>
+						<div class="col-lg-3">
+							<div class="form-group">			
+								<button class="btn btn-default btn-block" id="btnBuscarVaciarCampos"><span class="glyphicon glyphicon-trash"></span> vaciar campos</button>
+						  </div>
+						</div>
+
+						<div class="col-lg-7">
+							<div class="form-group">								
+								<hr>
+					    </div>
+						</div>						
+
+						<div class="col-lg-4">
+							<div class="form-group">								
+								<strong>NOMBRE DEL SOCIO:</strong><br>		
+					      <span id="txtNombreSocio"></span>
+					    </div>
+						</div>
+
+						<div class="col-lg-3">
+							<div class="form-group">
+								<strong>N° LOTES:</strong><br>		
+					      <span id="txtN_Lotes"></span>
+					      <input type="hidden" id="txtN_LotesProvicional">
+					    </div>
+						</div>		
+
+						<div class="col-lg-4">
+							<div class="form-group">
+								<strong>CORREO:	</strong><br>		
+					      <span id="txtCorreo"></span>
+					    </div>
+						</div>
+
+						<div class="col-lg-3">
+							<div class="form-group">
+								<strong>DIRECCION:	</strong><br>		
+					      <span id="txtDireccion"></span>
+					    </div>
+						</div>
+
+						<div class="col-lg-4">
+							<div class="form-group">
+								<strong>TELEFONO FIJO:	</strong><br>	
+					      <span id="txtFijo"></span>
+					    </div>
+						</div>
+
+						<div class="col-lg-3">
+							<div class="form-group">
+								<strong>CELULAR 1:	</strong><br>	
+					      <span id="txtCel1"></span>
+					    </div>
+						</div>
+				
+						<div class="col-lg-4">
+							<div class="form-group">
+								<strong>CELULAR 2:	</strong><br>
+					      <span id="txtCel2"></span>					      
+					    </div>
+						</div>
+
+						<div class="col-lg-3">
+							<div class="form-group">
+								<strong>CONTRASEÑA:</strong><br>	
+					   		<span id="txtClaveSocio"></span>					      
+					   	</div>
+						</div>
+
+						<div class="col-lg-7">
+							<div class="form-group">								
+								<hr>
+					    </div>
+						</div>		
+
+						<div class="col-lg-4">
+							<div class="form-group">			
+								
+						  </div>
+						</div>
+
+						<div class="col-lg-3">
+							<div class="form-group">			
+								<button class="btn btn-default btn-block" id="btnVerDetallesFacturaPago"><span class="glyphicon glyphicon-indent-left"></span> VER FACTURA DE PAGO</button>
+						  </div>
+						</div>
+
+					</div>	
+
+				</div>		
+
+			</div>
+
+		</div>
+    <!--fin proceso socios-->
+
+    <!--Inicio proceso socios facturacion-->
+    <div id="divDetallesDeLaFactura">
+
+      <ul class="nav nav-tabs">
+		    <li class="active"><a data-toggle="tab" href="#factura">FACTURA</a></li>
+		    <li id="tabPagosSostenimiento"><a data-toggle="tab" href="#pagosSostenimiento">PAGOS SOSTENIMIENTO</a></li>
+				<li id="tabAbonosAcueducto"><a data-toggle="tab" href="#aportesParaAcueducto">APORTES PARA ACUEDUCTO</a></li>
+				<li id="tabVias1"><a data-toggle="tab" href="#aportesVias1">APORTES PARA ViAS 1</a></li>
+				<li id="tabVias2"><a data-toggle="tab" href="#aportesVias2">APORTES PARA ViAS 2</a></li>
+		  </ul>
+
+		  <div class="tab-content">
+		    <div id="factura" class="tab-pane fade in active">
+		    	<div id="divSocioDetalleFacuraImprimir">
+						
+						<br>
+						<center>
+							
+							<table border="1px" style="margin-bottom: 2px;">
+								<tbody>
+									<tr>
+										<td style="padding-left: 6px; width: 950px; text-align: center;">
+											<h5>
+											<strong>CORPORACION DE PROPIETARIOS <br>ZONA INDUSTRIAL <br>CORPOUNIDOS</strong>
+										</h5>	
+										</td>
+									</tr>
+								</tbody>
+							</table>
+
+							<table border="1px" style="margin-bottom: 2px;">
+								<tbody>
+									<tr>
+										<td style="padding-left: 6px; width: 950px; text-align: center;">
+											<h5><strong>FACTURA DE PAGO</strong></h5>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+
+							<table border="1px" style="margin-bottom: 5px;">
+								<tbody>
+									<tr>
+										<td style="padding-left: 6px; width: 150px; background: #f5f5f5;">NOMBRE</td>
+										<td style="padding-left: 6px; width: 420px" id="tdNombre"></td>
+										<td style="padding-left: 6px; width: 180px; background: #f5f5f5;">FECHA</td>
+										<td style="padding-left: 6px; width: 200px" id="tdFechaFactura"></td>
+									</tr>
+									<tr>
+										<td style="padding-left: 6px; width: 150px; background: #f5f5f5;">LOTES</td>
+										<td style="padding-left: 6px; width: 420px" id="tdLotes"></td>
+										<td style="padding-left: 6px; width: 180px; background: #f5f5f5;">N° SOCIO</td>
+										<td style="padding-left: 6px; width: 200px" id="tdNumeroSocio"></td>
+									</tr>
+								</tbody>
+							</table>
+
+							<table border="1px">
+								<tbody>
+									<tr>
+										<td style="padding-left: 6px; width: 950px; text-align: center; background: #f5f5f5;">
+											<h5><strong>SOSTENIMIENTO</strong></h5>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+
+							<table border="1px">
+								<thead>
+									<tr>
+										<th style="padding-left: 6px; width: 230px; background: #f5f5f5;">AÑO</th>
+										<th style="padding-left: 6px; width: 230px; background: #f5f5f5;">N° CUOTAS</th>
+										<th style="padding-left: 6px; width: 245px; background: #f5f5f5;">VALOR CUOTA</th>
+										<th style="padding-left: 6px; width: 245px; background: #f5f5f5;">TOTAL AÑO X N° LOTES</th>
+									</tr>
+								</thead>	
+								<tbody id="tableCuotas" style="font-size: 12px;">
+						            
+						  		</tbody>
+							</table>
+
+							<table border="1px">
+								<tbody id="tableCuotas2" style="font-size: 12px;">
+						            
+						  		</tbody>
+							</table>
+
+							<table border="1px" style="margin-bottom: 8px;">
+								<tbody>
+									<tr>
+										<td style="padding-left: 6px; width: 460px; background: #f5f5f5;">TOTAL SOSTENIMIENTO</td>
+										<td style="text-align: -webkit-right; padding-right: 6px; width: 490px;" id="tdTotalSostenimiento"></td>
+									</tr>
+									<tr>
+										<td style="padding-left: 6px; width: 460px; background: #f5f5f5;">TOTAL PAGOS REALIZADOS</td>
+										<td style="text-align: -webkit-right; padding-right: 6px; width: 490px;" id="tdTotalPagosRealizados"></td>
+									</tr>
+									<tr>
+										<td style="padding-left: 6px; width: 460px; background: #f5f5f5;">SALDO A LA FECHA SOSTENIMIENTO</td>
+										<td style="text-align: -webkit-right; padding-right: 6px; width: 490px;" id="tdSaldoAlaFecha"></td>
+									</tr>
+								</tbody>
+							</table>
+
+							<table border="1px">
+								<tbody>
+									<tr>
+										<td style="padding-left: 6px; width: 950px; text-align: center; background: #f5f5f5;">
+											<h5><strong>APORTES DE CONFINANCIACION PARA ACUEDUCTO</strong></h5>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+
+							<table border="1px">
+								<tbody>
+									<tr>
+										<td style="padding-left: 6px; width: 150px; background: #f5f5f5;">VALOR/LOTE</td>
+										<td style="padding-left: 6px; width: 158px; text-align: center;">$ 1.114.000</td>
+										<td style="padding-left: 6px; width: 150px; background: #f5f5f5;">N° LOTES</td>
+										<td style="padding-left: 6px; width: 158px; text-align: center;" id="tdAportesNumLotes"></td>
+										<td style="padding-left: 6px; width: 150px; background: #f5f5f5;">TOTAL</td>
+										<td style="padding-left: 6px; width: 184px; text-align: center;" id="idTdTotalAcuerdoAcueducto"></td>
+									</tr>
+								</tbody>
+							</table>
+
+							<table border="1px" style="margin-bottom: 8px">
+								<thead>
+									<tr>
+										<th style="padding-left: 6px; width: 150px; background: #f5f5f5;">CUOTA</th>
+										<th style="padding-left: 6px; width: 158px; background: #f5f5f5;">FECHA PAGO</th>
+										<th style="padding-left: 6px; width: 308px; background: #f5f5f5;">VALOR</th>
+										<th style="padding-left: 6px; width: 150px; background: #f5f5f5;">ABONOS</th>
+										<th style="padding-left: 6px; width: 92px; background: #f5f5f5;">MESES MORA</th>
+										<th style="padding-left: 6px; width: 92px; background: #f5f5f5;">TOTAL</th>
+									</tr>	
+								</thead>	
+								<tbody>
+									<tr>
+										<td style="padding-left: 6px; width: 150px; text-align: center;">1</td>
+										<td style="padding-left: 6px; width: 158px; text-align: center;">1/1/2008</td>
+										<td style="padding-left: 6px; width: 308px; text-align: center;" id="idTdTotalAcuAcueductoProvicional"></td>
+										<td style="padding-left: 6px; width: 150px; text-align: center;" id="idTdAbonosActual"></td>
+										<td style="padding-left: 6px; width: 92px;  text-align: center;" id="tdTdMesMora"></td>
+										<td style="padding-left: 6px; width: 92px;  text-align: center;" id="idTdTotalMesMora"></td>
+									</tr>
+								</tbody>
+							</table>
+
+							<table border="1px">
+								<tbody>
+									<tr>
+										<td style="padding-left: 6px; width: 950px; text-align: center; background:#f5f5f5;">
+											<h5><strong>APORTES DE CONFINANCIACION VIAS CUOTA 1</strong></h5>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+
+							<table border="1px">
+								<tbody>
+									<tr>
+										<td style="padding-left: 6px; width: 150px; background: #f5f5f5;">VALOR/LOTE</td>
+										<td style="padding-left: 6px; width: 158px; text-align: center;" id="idTdVias1Valor">$1.000.000</td>
+										<td style="padding-left: 6px; width: 150px; background: #f5f5f5;">N° LOTES</td>
+										<td style="padding-left: 6px; width: 158px; text-align: center;" id="tdVias1NumLotes"></td>
+										<td style="padding-left: 6px; width: 150px; background: #f5f5f5;">TOTAL</td>
+										<td style="padding-left: 6px; width: 184px; text-align: center;" id="idTdVias1Total"></td>
+									</tr>
+								</tbody>
+							</table>
+
+							<table border="1px" style="margin-bottom: 8px">
+								<thead>
+									<tr>
+										<th style="padding-left: 6px; width: 150px; background: #f5f5f5;">CUOTA</th>
+										<th style="padding-left: 6px; width: 158px; background: #f5f5f5;">FECHA PAGO</th>
+										<th style="padding-left: 6px; width: 308px; background: #f5f5f5;">VALOR</th>
+										<th style="padding-left: 6px; width: 150px; background: #f5f5f5;">ABONOS</th>
+										<th style="padding-left: 6px; width: 92px; background: #f5f5f5;">MESES MORA</th>
+										<th style="padding-left: 6px; width: 92px; background: #f5f5f5;">TOTAL</th>
+									</tr>	
+								</thead>	
+								<tbody>
+									<tr>
+										<td style="padding-left: 6px; width: 150px; text-align: center;">1</td>
+										<td style="padding-left: 6px; width: 158px; text-align: center;">1/05/2014</td>
+										<td style="padding-left: 6px; width: 308px; text-align: center;" id="idtdVias1Valor"></td>
+										<td style="padding-left: 6px; width: 150px; text-align: center;" id="idTdVias1Abono"></td>
+										<td style="padding-left: 6px; width: 92px;  text-align: center;" id="idTdVias1MesMora"></td>
+										<td style="padding-left: 6px; width: 92px;  text-align: center;" id="idTdTotalVias1MesMora"></td>
+									</tr>
+								</tbody>
+							</table>
+
+							<table border="1px">
+								<tbody>
+									<tr>
+										<td style="padding-left: 6px; width: 950px; text-align: center; background:#f5f5f5;">
+											<h5><strong>APORTES DE CONFINANCIACION VIAS CUOTA 2</strong></h5>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+
+							<table border="1px">
+								<tbody>
+									<tr>
+										<td style="padding-left: 6px; width: 150px; background: #f5f5f5;">VALOR/LOTE</td>
+										<td style="padding-left: 6px; width: 158px; text-align: center;" id="idTdVias2Valor">$2.000.000</td>
+										<td style="padding-left: 6px; width: 150px; background: #f5f5f5;">N° LOTES</td>
+										<td style="padding-left: 6px; width: 158px; text-align: center;" id="tdVias2NumLotes"></td>
+										<td style="padding-left: 6px; width: 150px; background: #f5f5f5;">TOTAL</td>
+										<td style="padding-left: 6px; width: 184px; text-align: center;" id="idTdVias2Total"></td>
+									</tr>
+								</tbody>
+							</table>
+
+							<table border="1px" style="margin-bottom: 8px">
+								<thead>
+									<tr>
+										<th style="padding-left: 6px; width: 150px; background: #f5f5f5;">CUOTA</th>
+										<th style="padding-left: 6px; width: 158px; background: #f5f5f5;">FECHA PAGO</th>
+										<th style="padding-left: 6px; width: 308px; background: #f5f5f5;">VALOR</th>
+										<th style="padding-left: 6px; width: 150px; background: #f5f5f5;">ABONOS</th>
+										<th style="padding-left: 6px; width: 92px; background: #f5f5f5;">MESES MORA</th>
+										<th style="padding-left: 6px; width: 92px; background: #f5f5f5;">TOTAL</th>
+									</tr>	
+								</thead>	
+								<tbody>
+									<tr>
+										<td style="padding-left: 6px; width: 150px; text-align: center;">1</td>
+										<td style="padding-left: 6px; width: 158px; text-align: center;">1/07/2014</td>
+										<td style="padding-left: 6px; width: 308px; text-align: center;" id="idtdVias2Valor"></td>
+										<td style="padding-left: 6px; width: 150px; text-align: center;" id="idTdVias2Abono"></td>
+										<td style="padding-left: 6px; width: 92px;  text-align: center;" id="idTdVias2MesMora"></td>
+										<td style="padding-left: 6px; width: 92px;  text-align: center;" id="idTdTotalVias2MesMora"></td>
+									</tr>
+								</tbody>
+							</table>
+
+							<table border="1px">
+								<tbody>						
+									<tr>
+										<td style="padding-left: 6px; width: 666px; background: #7d6b6b; text-align: left; color: white;">
+											TOTAL A PAGAR
+										</td>
+										<td style="padding-right: 6px; width: 100px; background: #7d6b6b; text-align: center; color: white;" id="idTdfechaTotalPagar"></td>
+										<td style="padding-left: 6px; width: 184px; text-align: center;" id="idTdTotalAPagar"></td>
+									</tr>
+								</tbody>
+							</table>		
+
+							<table border="1px">
+								<tbody>						
+									<tr>
+										<td style="padding-left: 6px; width: 950px;">
+											<label><strong>NOTA: </strong>
+												Favor consignar el valor en la cuenta de ahorros N° 305-56487-4 de DAVIVIENDA a nombre de CORPOUNIDOS y llevar copia de la consignacion a la oficina de la Arquitecta Gloria Peña Cuellar, ubicada en la Calle 4 No. 4-64 Segundo piso.
+											</label>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+
+						</center>	
+
+					</div>
+		    </div>
+		      
+		    <div id="pagosSostenimiento" class="tab-pane fade">
+					
+					<br>
+		    	<center>
+			    <div class="row">
+			      	<div class="col-lg-12">
+
+			      		<table border="1px" style="margin-bottom: 2px;">
+									<tbody>
+										<tr>
+											<td style="padding-left: 6px; width: 950px; text-align: center;">
+												<h5>
+												<strong>CORPORACION DE PROPIETARIOS <br>ZONA INDUSTRIAL <br>CORPOUNIDOS</strong>
+											</h5>	
+											</td>
+										</tr>
+									</tbody>
+								</table>
+
+								<table border="1px" style="margin-bottom: 2px;">
+									<tbody>
+										<tr>
+											<td style="padding-left: 6px; width: 950px; text-align: center;">
+												<h5><strong>PAGOS SOSTENIMIENTO</strong></h5>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+
+								<table border="1px" style="margin-bottom: 5px;">
+									<tbody>
+										<tr>
+											<td style="padding-left: 6px; width: 150px; background: #f5f5f5;">NOMBRE</td>
+											<td style="padding-left: 6px; width: 420px" id="tdPagSostNombre"></td>
+											<td style="padding-left: 6px; width: 180px; background: #f5f5f5;">FECHA</td>
+											<td style="padding-left: 6px; width: 200px" id="tdFechaPagos"></td>
+										</tr>
+										<tr>
+											<td style="padding-left: 6px; width: 150px; background: #f5f5f5;">LOTES</td>
+											<td style="padding-left: 6px; width: 420px" id="tdPagSostLotes"></td>
+											<td style="padding-left: 6px; width: 180px; background: #f5f5f5;">N° SOCIO</td>
+											<td style="padding-left: 6px; width: 200px" id="tdPagSostNumeroSocio"></td>
+										</tr>
+									</tbody>
+								</table>
+
+			      		<table border="1px">
+									<thead>
+										<tr>
+											<th style="padding-left: 6px; width: 115px; background: #f5f5f5;">ID</th>
+											<th style="padding-left: 6px; width: 115px; background: #f5f5f5;">N° RECIBO</th>
+											<th style="padding-left: 6px; width: 230px; background: #f5f5f5;">FECHA</th>
+											<th style="padding-left: 6px; width: 245px; background: #f5f5f5;">ENTIDAD</th>
+											<th style="padding-left: 6px; width: 245px; background: #f5f5f5;">ABONO</th>
+										</tr>
+									</thead>	
+									<tbody id="tablePagosSostenimiento" style="font-size: 12px;">
+									            
+						  		</tbody>
+								</table>
+
+								<table border="1px">
+									<thead>
+										<tr>
+											<th style="padding-left: 6px; width: 230px;"></th>
+											<th style="padding-left: 6px; width: 230px;"></th>
+											<th style="padding-left: 6px; width: 245px; background: #f5f5f5;">TOTAL</th>
+											<th style="padding-left: 6px; width: 245px; background: #f5f5f5;" id="idTdTotalPagosSumaAbonos"></th>
+										</tr>
+									</thead>	
+								</table>
+
+			      	</div>
+			      </div>
+		      </center>
+
+		    </div>
+					
+				<div id="aportesParaAcueducto" class="tab-pane fade">
+					
+					<br>
+					<center>
+					<table border="1px" style="margin-bottom: 2px;">
+						<tbody>
+							<tr>
+								<td style="padding-left: 6px; width: 950px; text-align: center;">
+									<h5>
+									<strong>CORPORACION DE PROPIETARIOS <br>ZONA INDUSTRIAL <br>CORPOUNIDOS</strong>
+								</h5>	
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<table border="1px" style="margin-bottom: 2px;">
+						<tbody>
+							<tr>
+								<td style="padding-left: 6px; width: 950px; text-align: center;">
+									<h5><strong>APORTES DE CONFINANCIACION PARA ACUEDUCTO</strong></h5>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+							
+					<table border="1px" style="margin-bottom: 5px;">
+						<tbody>
+							<tr>
+								<td style="padding-left: 6px; width: 150px; background: #f5f5f5;">NOMBRE</td>
+								<td style="padding-left: 6px; width: 420px" id="tdAbonosAcueductoNombre"></td>
+								<td style="padding-left: 6px; width: 180px; background: #f5f5f5;">FECHA</td>
+								<td style="padding-left: 6px; width: 200px" id="tdAbonosAcueductoFecha"></td>
+							</tr>
+							<tr>
+								<td style="padding-left: 6px; width: 150px; background: #f5f5f5;">LOTES</td>
+								<td style="padding-left: 6px; width: 420px" id="tdAbonosAcueductoLotes"></td>
+								<td style="padding-left: 6px; width: 180px; background: #f5f5f5;">N° SOCIO</td>
+								<td style="padding-left: 6px; width: 200px" id="tdAbonosAcueductoNumeroSocio"></td>
+							</tr>
+						</tbody>
+					</table>		
+							
+					<table border="1px">
+						<thead>
+							<tr>
+								<th style="padding-left: 6px; width: 78px; background: #f5f5f5;">ID</th>
+								<th style="padding-left: 6px; width: 79px; background: #f5f5f5;">N° RECIBO</th>
+								<th style="padding-left: 6px; width: 130px; background: #f5f5f5;">CORTE MES</th>
+								<th style="padding-left: 6px; width: 135px; background: #f5f5f5;">ABONO</th>
+								<th style="padding-left: 6px; width: 165px; background: #f5f5f5;">ENTIDAD</th>
+								<th style="padding-left: 6px; width: 135px; background: #f5f5f5;">INTERESES</th>
+								<th style="padding-left: 6px; width: 135px; background: #f5f5f5;">PASAN</th>
+							</tr>
+						</thead>	
+						<tbody id="tableAportesParaAcueducto" style="font-size: 12px;">
+									            
+						</tbody>
+					</table>
+					
+					<table border="1px">
+						<thead>
+							<tr>
+								<th style="padding-left: 6px; width: 157px;"></th>
+								<th style="padding-left: 6px; width: 157px; background: #f5f5f5;">TOTAL ABONOS</th>
+								<th style="padding-left: 6px; width: 157px; background: #f5f5f5;" id="idTotalAbonosAcueducto"></th>
+								<th style="padding-left: 6px; width: 165px;"></th>	
+								<th style="padding-left: 6px; width: 157px; background: #f5f5f5;">TOTAL A LA FECHA</th>	
+								<th style="padding-left: 6px; width: 157px; background: #f5f5f5;" id="idUltimoMes"></th>
+							</tr>
+						</thead>	
+					</table>
+					</center>
+						
+				</div>	
+
+				<div id="aportesVias1" class="tab-pane fade">
+
+					<br>
+					<center>
+							
+					<table border="1px" style="margin-bottom: 2px;">
+						<tbody>
+							<tr>
+								<td style="padding-left: 6px; width: 950px; text-align: center;">
+									<h5>
+									<strong>CORPORACION DE PROPIETARIOS <br>ZONA INDUSTRIAL <br>CORPOUNIDOS</strong>
+								</h5>	
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<table border="1px" style="margin-bottom: 2px;">
+						<tbody>
+							<tr>
+								<td style="padding-left: 6px; width: 950px; text-align: center;">
+									<h5><strong>APORTES DE CONFINANCIACION VIAS CUOTA 1</strong></h5>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<table border="1px" style="margin-bottom: 5px;">
+						<tbody>
+							<tr>
+								<td style="padding-left: 6px; width: 150px; background: #f5f5f5;">NOMBRE</td>
+								<td style="padding-left: 6px; width: 420px" id="tdNombreVias1"></td>
+								<td style="padding-left: 6px; width: 180px; background: #f5f5f5;">FECHA</td>
+								<td style="padding-left: 6px; width: 200px" id="tdFechaVias1"></td>
+							</tr>
+							<tr>
+								<td style="padding-left: 6px; width: 150px; background: #f5f5f5;">LOTES</td>
+								<td style="padding-left: 6px; width: 420px" id="tdLotesVias1"></td>
+								<td style="padding-left: 6px; width: 180px; background: #f5f5f5;">N° SOCIO</td>
+								<td style="padding-left: 6px; width: 200px" id="tdNumeroSocioVias1"></td>
+							</tr>
+						</tbody>
+					</table>
+
+					<table border="1px">
+						<thead>
+							<tr>
+								<th style="padding-left: 6px; width: 78px; background: #f5f5f5;">NUMERO</th>
+								<th style="padding-left: 6px; width: 79px; background: #f5f5f5;">N° RECIBO</th>
+								<th style="padding-left: 6px; width: 130px; background: #f5f5f5;">CORTE MES</th>
+								<th style="padding-left: 6px; width: 135px; background: #f5f5f5;">ABONO</th>
+								<th style="padding-left: 6px; width: 165px; background: #f5f5f5;">ENTIDAD</th>
+								<th style="padding-left: 6px; width: 135px; background: #f5f5f5;">INTERESES</th>
+								<th style="padding-left: 6px; width: 135px; background: #f5f5f5;">PASAN</th>
+							</tr>
+						</thead>	
+						<tbody id="tableAportesParaVias1" style="font-size: 12px;">
+									            
+						</tbody>
+					</table>
+					
+					<table border="1px">
+						<thead>
+							<tr>
+								<th style="padding-left: 6px; width: 157px;"></th>
+								<th style="padding-left: 6px; width: 157px; background: #f5f5f5;">TOTAL ABONOS</th>
+								<th style="padding-left: 6px; width: 157px; background: #f5f5f5;" id="idTotalAbonosVias1"></th>
+								<th style="padding-left: 6px; width: 165px;"></th>	
+								<th style="padding-left: 6px; width: 157px; background: #f5f5f5;">TOTAL INTERESES</th>	
+								<th style="padding-left: 6px; width: 157px; background: #f5f5f5;" id="idUltimoMesVias1"></th>
+							</tr>
+						</thead>	
+					</table>
+					</center>
+					</center>
+
+				</div>
+
+				<div id="aportesVias2" class="tab-pane fade">
+
+					<br>
+					<center>
+							
+					<table border="1px" style="margin-bottom: 2px;">
+						<tbody>
+							<tr>
+								<td style="padding-left: 6px; width: 950px; text-align: center;">
+									<h5>
+									<strong>CORPORACION DE PROPIETARIOS <br>ZONA INDUSTRIAL <br>CORPOUNIDOS</strong>
+								</h5>	
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<table border="1px" style="margin-bottom: 2px;">
+						<tbody>
+							<tr>
+								<td style="padding-left: 6px; width: 950px; text-align: center;">
+									<h5><strong>APORTES DE CONFINANCIACION VIAS CUOTA 2</strong></h5>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<table border="1px" style="margin-bottom: 5px;">
+						<tbody>
+							<tr>
+								<td style="padding-left: 6px; width: 150px; background: #f5f5f5;">NOMBRE</td>
+								<td style="padding-left: 6px; width: 420px" id="tdNombreVias2"></td>
+								<td style="padding-left: 6px; width: 180px; background: #f5f5f5;">FECHA</td>
+								<td style="padding-left: 6px; width: 200px" id="tdFechaVias2"></td>
+							</tr>
+							<tr>
+								<td style="padding-left: 6px; width: 150px; background: #f5f5f5;">LOTES</td>
+								<td style="padding-left: 6px; width: 420px" id="tdLotesVias2"></td>
+								<td style="padding-left: 6px; width: 180px; background: #f5f5f5;">N° SOCIO</td>
+								<td style="padding-left: 6px; width: 200px" id="tdNumeroSocioVias2"></td>
+							</tr>
+						</tbody>
+					</table>
+
+					<table border="1px">
+						<thead>
+							<tr>
+								<th style="padding-left: 6px; width: 78px; background: #f5f5f5;">NUMERO</th>
+								<th style="padding-left: 6px; width: 79px; background: #f5f5f5;">N° RECIBO</th>
+								<th style="padding-left: 6px; width: 130px; background: #f5f5f5;">CORTE MES</th>
+								<th style="padding-left: 6px; width: 135px; background: #f5f5f5;">ABONO</th>
+								<th style="padding-left: 6px; width: 165px; background: #f5f5f5;">ENTIDAD</th>
+								<th style="padding-left: 6px; width: 135px; background: #f5f5f5;">INTERESES</th>
+								<th style="padding-left: 6px; width: 135px; background: #f5f5f5;">PASAN</th>
+							</tr>
+						</thead>	
+						<tbody id="tableAportesParaVias2" style="font-size: 12px;">
+									            
+						</tbody>
+					</table>
+					
+					<table border="1px">
+						<thead>
+							<tr>
+								<th style="padding-left: 6px; width: 157px;"></th>
+								<th style="padding-left: 6px; width: 157px; background: #f5f5f5;">TOTAL ABONOS</th>
+								<th style="padding-left: 6px; width: 157px; background: #f5f5f5;" id="idTotalAbonosVias2"></th>
+								<th style="padding-left: 6px; width: 165px;"></th>	
+								<th style="padding-left: 6px; width: 157px; background: #f5f5f5;">TOTAL INTERESES</th>	
+								<th style="padding-left: 6px; width: 157px; background: #f5f5f5;" id="idUltimoMesVias2"></th>
+							</tr>
+						</thead>	
+					</table>
+					</center>
+					</center>
+
+				</div>
+		  </div>  
+
+		</div>
+	<!--fin proceso socios facturacion-->
+
+	<div class="row">
+		<div class="col-lg-12"><br><br><br></div>
+	</div>	
+
+</div>
+
+
+<script src="js/main.js"></script>
+<script src="js/convertidorMoneda.js"></script>
+
+<script type="text/javascript">
+
+	datosIniciales();
+
+	function datosIniciales() {
+
+		/*$("#procesoSociosDiv").hide();
+		$("#procesoAdmin").hide();
+		$("#procesoSocios").hide();
+		$("#procesoAdminDiv").show(1000);
+		$("#spanCountCantSocios").hide();
+		$("#divTableSocios").hide();
+		$("#sociosLabel").hide();
+		$("#divNuevoSocio").hide();
+		//$("#divResultadoBusquedaSocio").hide();*/
+
+		$("#btnBuscarVaciarCampos").attr('disabled', 'disabled');
+		$("#btnBuscarDataSocio").attr('disabled', 'disabled');
+
+		$("#divDetallesDeLaFactura").hide();
+		$("#btnVerDetallesFacturaPago").attr("disabled", "true");		
+
+		$('.carousel').carousel({
+		  interval: 2000
+		})
+
+	}
+
+
+	function cargarDataDespuesLogin() {
+
+		$("#divLoad").hide();
+		$(".divLogin").hide();
+		$("#btnSalir").show(300);
+		$("#procesoAdminDiv").hide();
+		$("#procesoSociosDiv").hide();
+		$("#procesoAdmin").hide();
+		$("#procesoSocios").hide();
+		$("#spanCountCantSocios").show(100);
+		$("#divTableSocios").show();
+		$("#sociosLabel").show();		
+		$("#divDetallesDeLaFactura").hide();
+		$("#procesoRegistroPagSostenimiento").show();
+
+	}
+
+	function cargarDataAntesLogin() {
+
+		$("#procesoRegistroPagSostenimiento").hide();
+		$("#divLoad").hide();
+		$(".divLogin").show(300);	
+		$("#btnSalir").hide();
+		$("#procesoAdmin").show(300);
+		$("#procesoSocios").show(300);
+		$("#spanCountCantSocios").hide();
+		$("#divTableSocios").hide();
+		$("#sociosLabel").hide();
+		$("#divNuevoSocio").hide();
+		$("#divDetallesDeLaFactura").hide();
+
+	}
+
+	function actualizarSocio(idSocio){
+		
+		firebase.database().ref('socios/'+idSocio).once('value', function(snapshot) {
+		
+			txtNuevoNombreSocio.value	= snapshot.val().NOMBRE;
+			txtNuevoN_Lotes.value 	  = snapshot.val().N_LOTES;
+			txtNuevoCel1.value  			= snapshot.val().CELL1;
+			txtNuevoCel2.value 				= snapshot.val().CELL2;
+			txtNuevoCorreo.value 			= snapshot.val().CORREO;
+			txtNuevoDireccion.value 	= snapshot.val().DIRECCION;
+			txtNuevoFijo.value 				= snapshot.val().FIJO;
+			txtNuevoClave.value 			= snapshot.val().PASSWORD;
+			txtNuevoC_Sostenimiento.value = snapshot.val().C_SOSTENIMIENTO;
+			txtNuevoId.value 							= idSocio;
+
+		});
+
+		$("#divNuevoSocio").show(400);
+		$("#tableSociosListado").hide();
+		$("#btnGuardarNuevoSocio").hide();
+		$("#btnCompletarActualizacionSocio").show(100);
+
+	}
+
+	function verDetallesSocio(idSocio) {
+
+		$("#tableSociosListado").hide();
+		$("#btnGuardarNuevoSocio").hide();
+		$("#btnNuevoSocio").hide();
+
+	}
+
+	function vaciarCamposBusquedaSocio() {
+	
+		txtNombreSocio.innerHTML	= '';
+		txtN_Lotes.innerHTML 	  	= '';
+		txtCel1.innerHTML  				= '';
+		txtCel2.innerHTML 				= '';
+		txtCorreo.innerHTML 			= '';
+		txtDireccion.innerHTML 		= '';
+		txtFijo.innerHTML 				= '';	
+		txtPasswordSocio.value  	= '';	
+		
+		tdAportesNumLotes.innerHTML 								= '';
+		idTdTotalAcuerdoAcueducto.innerHTML 				= '';
+		idTdTotalAcuAcueductoProvicional.innerHTML 	= '';
+		idTdAbonosActual.innerHTML 									= '';
+		tdTdMesMora.innerHTML 											= '';
+		idTdTotalPagosSumaAbonos.innerHTML 					= '';
+		idTotalAbonosAcueducto.innerHTML 						= '';
+		idUltimoMes.innerHTML 											= '';
+
+		//$("#divResultadoBusquedaSocio").hide();
+		$("#btnVerDetallesFacturaPago").attr('disabled', 'disabled');
+		$("#btnBuscarVaciarCampos").attr('disabled', 'disabled');
+		$("#btnBuscarDataSocio").attr('disabled', 'disabled');
+
+		socioSeleccionado.innerHTML = "RECUERDE SELECCIONAR UN SOCIO";				
+		divSocioSeleccionado.classList.remove("alert-info");	
+		divSocioSeleccionado.classList.add("alert-warning");
+	}
+
+	function seleccionarSocio(ping) {		
+
+		vaciarCamposBusquedaSocio();
+		txtPinSocio.value = ping;
+		//$("#divResultadoBusquedaSocio").show();
+		$("#btnBuscarVaciarCampos").removeAttr("disabled");
+		$("#btnBuscarDataSocio").removeAttr("disabled");
+
+		firebase.database().ref('socios/'+ping).once('value').then(function(snapshot) {
+
+			socioSeleccionado.innerHTML = ping + " : " + snapshot.val().NOMBRE;		
+			divSocioSeleccionado.classList.remove("alert-warning");	
+			divSocioSeleccionado.classList.add("alert-info");
+
+		});
+
+	};
+
+	function selSocioRegPagosSostenimiento(indice) {
+
+		console.log(indice);
+
+	}
+
+
+</script>
+
+<footer class="clase-general">
+    <p class="p-footer">Copyright 2017 | ZONA INDUSTRIAL COMERCIAL Y DE SERVICIOS.<br>
+    	Direccion: Calle 4 No.4-64 | Pitalito-Huila<br>
+    	Info: 836 1206</p>
+    <p style="text-align: -webkit-right; font-size: 10px; padding: 0px; margin: 0px; padding-right: 4px;">	COMPUPARTES GARCIA<br>
+    Info: 316 621 7506
+    </p>	
+</footer>
+
+</body>
+</html>
